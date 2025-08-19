@@ -1,0 +1,62 @@
+{
+  "name": "aihaoka",
+  "version": "1.0.0",
+  "description": "爱号卡 - 基于 VitePress 打造的流量卡推广与分享平台，支持图文介绍、优惠套餐展示、在线申请与推广分销，帮助用户快速选择合适的流量卡方案。",
+  "author": "爱宇阳",
+  "license": "MIT",
+  "homepage": "https://hk.aiyvyang.top",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/aiyvyang/aihaoka"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "流量卡",
+    "推广平台",
+    "爱号卡",
+    "虚拟运营商",
+    "通信套餐",
+    "手机卡优惠",
+    "流量套餐",
+    "VitePress",
+    "图文资源分享",
+    "分销推广",
+    "爱宇阳"
+  ],
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "feed": "^5.1.0",
+    "floating-vue": "^5.2.2",
+    "markdown-it-custom-attrs": "^1.0.2",
+    "pagefind": "^1.3.0",
+    "pinia": "^3.0.3",
+    "swiper": "^11.2.10",
+    "vitepress-plugin-pagefind": "^0.4.14",
+    "vue3-toastify": "^0.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/pg": "^8.15.5",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "@typescript-eslint/parser": "^8.40.0",
+    "@typescript-eslint/types": "^8.40.0",
+    "@vue/compiler-sfc": "^3.5.18",
+    "blueimp-md5": "^2.19.0",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^10.4.0",
+    "fs-extra": "^11.3.1",
+    "globby": "^14.1.0",
+    "gray-matter": "^4.0.3",
+    "pg": "^8.16.3",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "vitepress": "^2.0.0-alpha.11"
+  }
+}

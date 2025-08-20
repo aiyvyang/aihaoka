@@ -35,7 +35,7 @@
     <div class="tobeebee" v-if="work?.beecode || work?.linkpan">
       <a
         class="a vp-external-link-icon"
-        :href="work?.beecode ? theme.beecodeurl + work?.beecode + '.htm' : work?.linkpan"
+        :href="work?.beecode ? theme.ayycodeurl + work?.beecode + '.htm' : work?.linkpan"
         target="_blank"
       >
         <span>备用下载</span>

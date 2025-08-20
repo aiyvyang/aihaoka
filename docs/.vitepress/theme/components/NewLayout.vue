@@ -25,11 +25,6 @@
     <template #nav-screen-content-after> </template>
     <template #nav-bar-content-before>
       <!-- 在导航搜索框💰添加 -->
-      <ClientOnly>
-        <div v-if="!isPause" class="" style="padding-left: 32px; position: relative; height: 40px; margin-right: 0px">
-          <Player />
-        </div>
-      </ClientOnly>
     </template>
     <template #nav-bar-title-after>
       <!-- 在标题后添加 -->
@@ -68,16 +63,13 @@
     </template>
   </Layout>
 </template>
+
 <script lang="ts" setup>
-import { toRefs } from 'vue'
 import { useData } from 'vitepress'
-import { usePlayerStore } from '../../store/player'
 import md5 from 'blueimp-md5'
 import DefaultTheme from 'vitepress/theme'
 import Copyright from './Copyright.vue'
-import Player from './Player.vue'
 
-const { isPause } = toRefs(usePlayerStore())
 const { page, theme, frontmatter, isDark } = useData()
 const { Layout } = DefaultTheme
 </script>

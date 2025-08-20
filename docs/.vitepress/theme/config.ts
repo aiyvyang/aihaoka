@@ -5,41 +5,6 @@ export const themeConfig = {
     { text: '爱宇阳活动福利', link: '#' },
     { text: '爱宇阳小程序', link: '#' }
   ],
-  music: [
-    //音乐列表，音乐播放器参数在.vitepress/store/player.ts。封面和歌词不支持可自行按照文章教程修改
-    // {
-    //     "id": 1,
-    //     "title": "陷落Falling",
-    //     "author": "不知名选手Au / 马也_Crabbit",
-    //     "url": "https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE0Nzk=",
-    //     "pic": "https://enshimama.oss-cn-shanghai.aliyuncs.com/smartgallery/music/01.jpg",
-    //     "lrc": ""
-    // },
-    {
-      "id": 2,
-      "title": "一个人想着一个人 ",
-      "author": "如懿",
-      "url": "https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE0ODA=",
-      "pic": "https://enshimama.oss-cn-shanghai.aliyuncs.com/smartgallery/music/02.jpg",
-      "lrc": ""
-    },
-    // {
-    //     "id": 3,
-    //     "title": "夜车（Cover 曾轶可）",
-    //     "author": "姜铭杨",
-    //     "url": "https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE0ODE=",
-    //     "pic": "https://enshimama.oss-cn-shanghai.aliyuncs.com/smartgallery/music/03.jpg",
-    //     "lrc": ""
-    // },
-    // {
-    //   id: 4,
-    //   title: '迎春花 / 財神到 / 祝福你 (廣東)',
-    //   author: '邓丽君 / 林子祥 / 甄妮',
-    //   url: 'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTI=',
-    //   pic: '',
-    //   lrc: ''
-    // }
-  ],
   banner: [
     //主页轮播，不需要就注释掉
     {
@@ -156,7 +121,6 @@ export const themeConfig = {
     showSnow: true, //是否开启雪花。开启后仅在暗黑模式下显示
     showUserCard: false, //是否显示列表中的博主名片
     cardPosition: 3, //显示在第几个位置
-    cardMusic: true, //是否显示播放音乐，音乐列表在上面 music中配置
     cardCoffee: true, //是否显示打赏咖啡，
     coffeeQrcode: '/icons/zanshang.png', //打赏咖啡二维码图片地址。如果是跳转网页地址需自行修改代码
     showLantern: false, //是否显示灯笼挂件

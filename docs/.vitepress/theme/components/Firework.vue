@@ -11,34 +11,6 @@
     <div class="msgwrap">
       <div class="messageleft">
         <input id="messageInput" placeholder="输入文字" :value="newyearwords" type="text" />
-        <div class="voicectl" v-tooltip="'炮竹声开启'" @click="changebackvoice">
-          <svg
-            :style="{
-              display: !backvoice2 ? 'block' : 'none'
-            }"
-            class="svg"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M5.88889 16H2C1.44772 16 1 15.5523 1 15V9.00001C1 8.44772 1.44772 8.00001 2 8.00001H5.88889L11.1834 3.66815C11.3971 3.49329 11.7121 3.52479 11.887 3.73851C11.9601 3.82784 12 3.93971 12 4.05513V19.9449C12 20.221 11.7761 20.4449 11.5 20.4449C11.3846 20.4449 11.2727 20.405 11.1834 20.3319L5.88889 16ZM20.4142 12L23.9497 15.5355L22.5355 16.9498L19 13.4142L15.4645 16.9498L14.0503 15.5355L17.5858 12L14.0503 8.46447L15.4645 7.05026L19 10.5858L22.5355 7.05026L23.9497 8.46447L20.4142 12Z"
-            ></path>
-          </svg>
-          <svg
-            :style="{
-              display: backvoice2 ? 'block' : 'none'
-            }"
-            class="svg"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path
-              d="M2 16.0001H5.88889L11.1834 20.3319C11.2727 20.405 11.3846 20.4449 11.5 20.4449C11.7761 20.4449 12 20.2211 12 19.9449V4.05519C12 3.93977 11.9601 3.8279 11.887 3.73857C11.7121 3.52485 11.3971 3.49335 11.1834 3.66821L5.88889 8.00007H2C1.44772 8.00007 1 8.44778 1 9.00007V15.0001C1 15.5524 1.44772 16.0001 2 16.0001ZM23 12C23 15.292 21.5539 18.2463 19.2622 20.2622L17.8445 18.8444C19.7758 17.1937 21 14.7398 21 12C21 9.26016 19.7758 6.80629 17.8445 5.15557L19.2622 3.73779C21.5539 5.75368 23 8.70795 23 12ZM18 12C18 10.0883 17.106 8.38548 15.7133 7.28673L14.2842 8.71584C15.3213 9.43855 16 10.64 16 12C16 13.36 15.3213 14.5614 14.2842 15.2841L15.7133 16.7132C17.106 15.6145 18 13.9116 18 12Z"
-            ></path>
-          </svg>
-        </div>
       </div>
 
       <button id="shootBtn" class="button">发射</button>
@@ -54,246 +26,8 @@ import { getRandomInt } from '../functions'
 const { isDark, theme } = useData()
 const newyearwordslist = theme.value?.website?.fireworkWords ? theme.value.website.fireworkWords : []
 const newyearwords = ref(newyearwordslist[getRandomInt(newyearwordslist.length)])
-const backvoice = ref(false)
-const backvoice2 = computed(() => backvoice.value)
 
 const windowHeight = ref(window.innerHeight)
-const changebackvoice = () => {
-  if (backvoice2.value) {
-    backvoice.value = false
-    soundManager.pauseAll()
-  } else {
-    backvoice.value = true
-    soundManager.resumeAll()
-  }
-
-  console.log(backvoice.value)
-}
-
-const MyMath = (function MyMathFactory(Math) {
-  const MyMath = {}
-
-  // degree/radian conversion constants
-  MyMath.toDeg = 180 / Math.PI
-  MyMath.toRad = Math.PI / 180
-  MyMath.halfPI = Math.PI / 2
-  MyMath.twoPI = Math.PI * 2
-
-  // Pythagorean Theorem distance calculation
-  MyMath.dist = (width, height) => {
-    return Math.sqrt(width * width + height * height)
-  }
-
-  // Pythagorean Theorem point distance calculation
-  // Same as above, but takes coordinates instead of dimensions.
-  // The language of this project was translated into Chinese by Nianbroken
-  MyMath.pointDist = (x1, y1, x2, y2) => {
-    const distX = x2 - x1
-    const distY = y2 - y1
-    return Math.sqrt(distX * distX + distY * distY)
-  }
-
-  // Returns the angle (in radians) of a 2D vector
-  MyMath.angle = (width, height) => MyMath.halfPI + Math.atan2(height, width)
-
-  // Returns the angle (in radians) between two points
-  // Same as above, but takes coordinates instead of dimensions.
-  MyMath.pointAngle = (x1, y1, x2, y2) => MyMath.halfPI + Math.atan2(y2 - y1, x2 - x1)
-
-  // Splits a speed vector into x and y components (angle needs to be in radians)
-  MyMath.splitVector = (speed, angle) => ({
-    x: Math.sin(angle) * speed,
-    y: -Math.cos(angle) * speed
-  })
-
-  // Generates a random number between min (inclusive) and max (exclusive)
-  MyMath.random = (min, max) => Math.random() * (max - min) + min
-
-  // Generates a random integer between and possibly including min and max values
-  MyMath.randomInt = (min, max) => ((Math.random() * (max - min + 1)) | 0) + min
-
-  // Returns a random element from an array, or simply the set of provided arguments when called
-  MyMath.randomChoice = function randomChoice(choices) {
-    if (arguments.length === 1 && Array.isArray(choices)) {
-      return choices[(Math.random() * choices.length) | 0]
-    }
-    return arguments[(Math.random() * arguments.length) | 0]
-  }
-
-  // Clamps a number between min and max values
-  MyMath.clamp = function clamp(num, min, max) {
-    return Math.min(Math.max(num, min), max)
-  }
-
-  return MyMath
-})(Math)
-
-const soundManager = {
-  baseURL: '',
-  ctx: new (window.AudioContext || window.webkitAudioContext)(),
-  sources: {
-    lift: {
-      volume: 1,
-      playbackRateMin: 0.85,
-      playbackRateMax: 0.95,
-      fileNames: [
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTk=', //lift1.mp3
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NjA=', //lift2.mp3
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NjE=' //lift3.mp3
-      ]
-    },
-    burst: {
-      volume: 1,
-      playbackRateMin: 0.8,
-      playbackRateMax: 0.9,
-      fileNames: [
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTU=', //burst1.mp3
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTY=' //burst2.mp3
-      ]
-    },
-    burstSmall: {
-      volume: 0.25,
-      playbackRateMin: 0.8,
-      playbackRateMax: 1,
-      fileNames: [
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTM=', //burst-sm-1.mp3
-        'https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTQ=' //burst-sm-2.mp3
-      ]
-    },
-    crackle: {
-      volume: 0.2,
-      playbackRateMin: 1,
-      playbackRateMax: 1,
-      fileNames: ['https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTg='] //crackle1.mp3
-    },
-    crackleSmall: {
-      volume: 0.3,
-      playbackRateMin: 1,
-      playbackRateMax: 1,
-      fileNames: ['https://res.wx.qq.com/voice/getvoice?mediaid=MzUzMDUzMjQyMl8xMDAwMDE4NTc='] //crackle-sm-1.mp3
-    }
-  },
-
-  preload() {
-    const allFilePromises = []
-
-    function checkStatus(response) {
-      if (response.status >= 200 && response.status < 300) {
-        return response
-      }
-      const customError = new Error(response.statusText)
-      customError.response = response
-      throw customError
-    }
-
-    const types = Object.keys(this.sources)
-    types.forEach((type) => {
-      const source = this.sources[type]
-      const { fileNames } = source
-      const filePromises = []
-      fileNames.forEach((fileName) => {
-        const fileURL = this.baseURL + fileName
-        // Promise will resolve with decoded audio buffer.
-        const promise = fetch(fileURL)
-          .then(checkStatus)
-          .then((response) => response.arrayBuffer())
-          .then(
-            (data) =>
-              new Promise((resolve) => {
-                this.ctx.decodeAudioData(data, resolve)
-              })
-          )
-
-        filePromises.push(promise)
-        allFilePromises.push(promise)
-      })
-
-      Promise.all(filePromises).then((buffers) => {
-        source.buffers = buffers
-      })
-    })
-
-    return Promise.all(allFilePromises)
-  },
-
-  pauseAll() {
-    this.ctx.suspend()
-  },
-
-  resumeAll() {
-    // Play a sound with no volume for iOS. This 'unlocks' the audio context when the user first enables sound.
-    this.playSound('lift', 0)
-    // Chrome mobile requires interaction before starting audio context.
-    // The sound toggle button is triggered on 'touchstart', which doesn't seem to count as a full
-    // interaction to Chrome. I guess it needs a click? At any rate if the first thing the user does
-    // is enable audio, it doesn't work. Using a setTimeout allows the first interaction to be registered.
-    // Perhaps a better solution is to track whether the user has interacted, and if not but they try enabling
-    // sound, show a tooltip that they should tap again to enable sound.
-    setTimeout(() => {
-      this.ctx.resume()
-    }, 250)
-  },
-
-  // Private property used to throttle small burst sounds.
-  _lastSmallBurstTime: 0,
-
-  /**
-   * Play a sound of `type`. Will randomly pick a file associated with type, and play it at the specified volume
-   * and play speed, with a bit of random variance in play speed. This is all based on `sources` config.
-   *
-   * @param  {string} type - The type of sound to play.
-   * @param  {?number} scale=1 - Value between 0 and 1 (values outside range will be clamped). Scales less than one
-   *                             descrease volume and increase playback speed. This is because large explosions are
-   *                             louder, deeper, and reverberate longer than small explosions.
-   *                             Note that a scale of 0 will mute the sound.
-   */
-  playSound(type, scale = 1) {
-    // Ensure `scale` is within valid range.
-    scale = MyMath.clamp(scale, 0, 1)
-
-    // Disallow starting new sounds if sound is disabled, app is running in slow motion, or paused.
-    // Slow motion check has some wiggle room in case user doesn't finish dragging the speed bar
-    // *all* the way back.
-    // if (!canPlaySoundSelector() || simSpeed < 0.95) {
-    // 	return;
-    // }
-
-    // Throttle small bursts, since floral/falling leaves shells have a lot of them.
-    if (type === 'burstSmall') {
-      const now = Date.now()
-      if (now - this._lastSmallBurstTime < 20) {
-        return
-      }
-      this._lastSmallBurstTime = now
-    }
-
-    const source = this.sources[type]
-
-    if (!source) {
-      throw new Error(`Sound of type "${type}" doesn't exist.`)
-    }
-
-    const initialVolume = source.volume
-    const initialPlaybackRate = MyMath.random(source.playbackRateMin, source.playbackRateMax)
-
-    // Volume descreases with scale.
-    const scaledVolume = initialVolume * scale
-    // Playback rate increases with scale. For this, we map the scale of 0-1 to a scale of 2-1.
-    // So at a scale of 1, sound plays normally, but as scale approaches 0 speed approaches double.
-    const scaledPlaybackRate = initialPlaybackRate * (2 - scale)
-
-    const gainNode = this.ctx.createGain()
-    gainNode.gain.value = scaledVolume
-
-    const buffer = MyMath.randomChoice(source.buffers)
-    const bufferSource = this.ctx.createBufferSource()
-    bufferSource.playbackRate.value = scaledPlaybackRate
-    bufferSource.buffer = buffer
-    bufferSource.connect(gainNode)
-    gainNode.connect(this.ctx.destination)
-    bufferSource.start(0)
-  }
-}
 
 const startcanvas = () => {
   interface Color {
@@ -418,10 +152,10 @@ const startcanvas = () => {
   function animate() {
     requestAnimationFrame(animate)
     ctx.rect(0, 0, canvaswidth, window.innerHeight)
+    // @ts-expect-error：缺少类型声明
     ctx.fillStyle = `rgba(${bgcolor.value?.r},${bgcolor.value?.g},${bgcolor.value?.b},1)`
     ctx.fill()
     if (Math.random() <= rocketSettings.spawnRate / 100) {
-      soundManager.playSound('burstSmall')
       fireworks.push(new Firework())
     }
     for (let i = fireworks.length - 1; i >= 0; i--) {
@@ -571,8 +305,6 @@ const startcanvas = () => {
           )
         }
       }
-      const soundx = ['burst', 'lift']
-      soundManager.playSound(soundx[getRandomInt(soundx.length)])
     }
   }
   init()
@@ -584,7 +316,6 @@ watch(isDark, (val) => {
 })
 onMounted(() => {
   if (theme.value?.website?.showFirework) {
-    soundManager.preload()
     startcanvas()
   }
 })
@@ -602,10 +333,9 @@ onMounted(() => {
 .message {
   position: sticky;
   z-index: 100;
-  bottom: 0px;
+  bottom: 0;
   margin-top: 40px;
   margin-bottom: -40px;
-  bottom: 0px;
   width: 100%;
   height: 40px;
 

@@ -2,15 +2,11 @@
   <!-- 首页右下角弹层，可放广告、欢迎语等。使用sessionStorage缓存 -->
   <div class="welcome">
     <h2 class="h2">
-      <span class="span">领取限量红包</span>
+      <span class="span">关注公众号</span>
     </h2>
-    <p class="p">比比出品<br />2024年上新</p>
+    <p class="p">爱宇阳</p>
     <div class="div">
-      <!-- <button class="button" @click="($event) => { closeToast && closeToast($event) }">免费领取</button> -->
-      <a class="button" href="https://mp.weixin.qq.com/s/TDtZuwuYhrxjWoNGNWTbQQ" target="_blank">免费领取</a>
-      <a class="a" href="https://mp.weixin.qq.com/s/TDtZuwuYhrxjWoNGNWTbQQ" target="_blank"
-        ><img class="image" src="/static/img/redcovers.png" alt=""
-      /></a>
+      <a class="button" href="https://mp.weixin.qq.com/s/l5zeSwt6ZcGo5VjQMlsqEg" target="_blank">点击关注</a>
     </div>
   </div>
 </template>

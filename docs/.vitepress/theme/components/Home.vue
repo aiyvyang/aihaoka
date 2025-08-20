@@ -68,38 +68,41 @@ const getposts = computed(() => {
 })
 
 const pageChange = (e: any) => {
-  currentpage.value = e
-  const { searchParams } = new URL(window.location.href!)
-  searchParams.delete('page')
-  searchParams.append('page', String(e))
-  router.go(`${location.value.origin}${router.route.path}?${searchParams.toString()}`)
+  if (typeof window !== 'undefined') {
+    currentpage.value = e
+    const { searchParams } = new URL(window.location.href!)
+    searchParams.delete('page')
+    searchParams.append('page', String(e))
+    router.go(`${location.value.origin}${router.route.path}?${searchParams.toString()}`)
+  }
 }
 
 router.onBeforeRouteChange = (to) => {
-  const url = new URL(to, window.location.origin)
-  const params = formatSearch(url.search)
-  activeTag.value = params?.tag || ''
-  activeCategory.value = params?.category || ''
-  activeYear.value = params?.year || ''
-  activeMonth.value = params?.month || ''
-  currentpage.value = Number(params?.page) || 1
-  if (params?.tag) {
-    console.log('new')
-    bread.value = '标签：' + params.tag
-  } else if (params?.category) {
-    bread.value = '分类：' + params.category
-  } else if (params?.year && params?.month) {
-    bread.value = '存档：' + params.year + '/' + params.month
-  } else if (params?.year) {
-    bread.value = '存档：' + params.year
-  } else {
-    bread.value = '全部内容'
+  if (typeof window !== 'undefined') {
+    const url = new URL(to, window.location.origin)
+    const params = formatSearch(url.search)
+    activeTag.value = params?.tag || ''
+    activeCategory.value = params?.category || ''
+    activeYear.value = params?.year || ''
+    activeMonth.value = params?.month || ''
+    currentpage.value = Number(params?.page) || 1
+    if (params?.tag) {
+      console.log('new')
+      bread.value = '标签：' + params.tag
+    } else if (params?.category) {
+      bread.value = '分类：' + params.category
+    } else if (params?.year && params?.month) {
+      bread.value = '存档：' + params.year + '/' + params.month
+    } else if (params?.year) {
+      bread.value = '存档：' + params.year
+    } else {
+      bread.value = '全部内容'
+    }
   }
 }
 watch(
   location,
   () => {
-    // console.log('location', location)
     if (location.value.href) {
       const url = new URL(location.value.href!)
       activeTag.value = url.searchParams.get('tag') || ''

@@ -9,7 +9,7 @@ const { copy, isSupported } = useClipboard()
 import { toast, type ToastOptions } from 'vue3-toastify'
 
 // 文字格式转换
-export function formatSearch(se: any) {
+export function formatSearch(se: any): any {
   if (typeof se !== 'undefined') {
     se = se.substr(1)
     var arr = se.split('&'),

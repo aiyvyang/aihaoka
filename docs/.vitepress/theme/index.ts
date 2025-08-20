@@ -21,7 +21,6 @@ import PageCtrol from './components/PageCtrol.vue'
 import PageGZH from './components/PageGZH.vue'
 import PageSlider from './components/PageSlider.vue'
 import ArticleCarousel from './components/ArticleCarousel.vue'
-import Player from './components/Player.vue'
 import Tools from './components/Tools.vue'
 import Links from './components/Links.vue'
 import Welcome from './components/Welcome.vue'
@@ -62,7 +61,6 @@ export default {
     app.component('PageSlider', PageSlider)
     app.component('ArticleList', ArticleList)
     app.component('ArticlePage', ArticlePage)
-    app.component('Player', Player)
     app.component('Tools', Tools)
     app.component('Links', Links)
     app.component('Welcome', Welcome)

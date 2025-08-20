@@ -7,6 +7,7 @@ export const head: HeadConfig[] = [
   ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }],
   ['meta', { property: 'og:image', content: '/logo.png' }],
   ['meta', { name: 'referrer', content: 'no-referrer' }],
+  // 百度统计
   [
     'script',
     {},
@@ -18,7 +19,8 @@ export const head: HeadConfig[] = [
       s.parentNode.insertBefore(hm, s);
     })();`
   ],
-  // <!-- Google Tag Manager -->
+  // End 百度统计
+  // Google Tag Manager
   [
     'script',
     {},
@@ -28,52 +30,13 @@ export const head: HeadConfig[] = [
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NK2T793R');`
   ],
-  // <!-- End Google Tag Manager -->
-  [
-    'script',
-    {
-      crossorigin: 'anonymous',
-      async: '',
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1279518235550313'
-    }
-  ],
-  ['script', { async: '', src: 'https://www.googletagmanager.com/gtag/js?id=G-QRQ5599P9G' }],
-  [
-    'script',
-    {},
-    `window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QRQ5599P9G');`
-  ],
-  [
-    'script',
-    {
-      nonce: 'X3-MeXfNjwsxlQdQcRqhtQ',
-      async: '',
-      src: 'https://fundingchoicesmessages.google.com/i/pub-1279518235550313?ers=1'
-    }
-  ],
-  [
-    'script',
-    {},
-    `(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`
-  ],
-  [
-    'script',
-    {},
-    `window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };`
-  ],
-  [
-    'script',
-    {
-      defer: '',
-      src: '/_vercel/insights/script.js'
-    }
-  ],
-  [
-    'link',
-    { rel: 'stylesheet', href: '/static/css/fancybox.css' } //全局控制图片放大样式
-  ],
-  ['script', { src: '/static/js/fancybox.umd.js' }] //全局控制图片放大交互
+  // End Google Tag Manager
+  // Vercel Web 分析
+  ['script', {}, `window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };`],
+  ['script', { defer: '', src: '/_vercel/insights/script.js' }],
+  // End Vercel Web 分析
+  // 全局控制图片放大交互
+  ['link', { rel: 'stylesheet', href: '/static/css/fancybox.css' }],
+  ['script', { src: '/static/js/fancybox.umd.js' }]
+  // End 全局控制图片放大交互
 ]

@@ -95,7 +95,7 @@ pnpm build
 学习更多关于 **流量卡推广平台搭建** 和 **前端开发实战** 的内容。
 
 <p align="center">
-  <img src="./docs/public/qrcode.jpg" alt="扫码关注 爱宇阳 公众号" width="227" />
+  <img src="./docs/public/icons/qrcode.jpg" alt="扫码关注 爱宇阳 公众号" width="227" />
 </p>
 
 ---

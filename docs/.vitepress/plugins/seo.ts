@@ -1,4 +1,4 @@
-import type { HeadConfig, SiteConfig, TransformContext } from 'vitepress'
+import type { HeadConfig, TransformContext } from 'vitepress'
 
 export interface SEOConfig {
   // 网站基础信息
@@ -48,12 +48,6 @@ export interface SEOConfig {
   // 推广配置（针对流量卡等推广站点）
   promotion?: {
     keywords?: string[]
-    customerService?: {
-      enable: boolean
-      delay?: number
-      message?: string
-      position?: 'left-bottom' | 'right-bottom' | 'left-top' | 'right-top'
-    }
     conversion?: {
       trackingId?: string
       events?: string[]
@@ -226,18 +220,17 @@ export class VitePressSEO {
       head.push([
         'script',
         { async: '', defer: '' },
-        `(function() {
+        `var _hmt = _hmt || [];
+        (function() {
           var hm = document.createElement("script");
           hm.src = "https://hm.baidu.com/hm.js?${this.config.analytics.baidu}";
-          hm.async = true;
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
-          window._hmt = window._hmt || [];
         })();`
       ])
     }
 
-    // Google Analytics 4
+    // Google Analytics 4(Google tag (gtag.js))
     if (this.config.analytics.google) {
       head.push(['script', { async: '', src: `https://www.googletagmanager.com/gtag/js?id=${this.config.analytics.google}` }])
       head.push([
@@ -257,7 +250,7 @@ export class VitePressSEO {
         { async: '', defer: '' },
         `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.defer=true;j.src=
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','${this.config.analytics.gtm}');`
       ])
@@ -302,83 +295,11 @@ export class VitePressSEO {
 
     if (!this.config.promotion) return head
 
-    // 客服系统配置
-    if (this.config.promotion.customerService?.enable) {
-      const csConfig = {
-        enable: true,
-        position: this.config.promotion.customerService.position || 'right-bottom',
-        showDelay: this.config.promotion.customerService.delay || 3000,
-        message: this.config.promotion.customerService.message || '有问题？立即咨询我们！',
-        ...this.config.promotion.customerService
-      }
-
-      head.push([
-        'script',
-        {},
-        `window.customerServiceConfig = ${JSON.stringify(csConfig)};`
-      ])
-    }
-
     // 转化追踪
     head.push([
       'script',
       {},
-      `// SEO插件 - 转化追踪系统
-      window.seoTracker = {
-        track: function(action, category, label, value) {
-          category = category || 'engagement';
-
-          // 百度统计事件
-          if (window._hmt) {
-            window._hmt.push(['_trackEvent', category, action, label, value]);
-          }
-
-          // Google Analytics 事件
-          if (window.gtag) {
-            window.gtag('event', action, {
-              event_category: category,
-              event_label: label,
-              value: value
-            });
-          }
-
-          console.log('SEO Track:', { action, category, label, value });
-        },
-
-        // 页面停留时间追踪
-        trackTimeOnPage: function() {
-          window.addEventListener('beforeunload', function() {
-            var timeOnPage = Math.round((Date.now() - window.pageStartTime) / 1000);
-            if (timeOnPage > 10) {
-              window.seoTracker.track('time_on_page', 'engagement', window.location.pathname, timeOnPage);
-            }
-          });
-          window.pageStartTime = Date.now();
-        },
-
-        // 滚动深度追踪
-        trackScrollDepth: function() {
-          var maxScrollDepth = 0;
-          window.addEventListener('scroll', function() {
-            var scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-            if (scrollDepth > maxScrollDepth && scrollDepth % 25 === 0) {
-              maxScrollDepth = scrollDepth;
-              window.seoTracker.track('scroll_depth', 'engagement', scrollDepth + '%', scrollDepth);
-            }
-          });
-        }
-      };
-
-      // 自动初始化
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          window.seoTracker.trackTimeOnPage();
-          window.seoTracker.trackScrollDepth();
-        });
-      } else {
-        window.seoTracker.trackTimeOnPage();
-        window.seoTracker.trackScrollDepth();
-      }`
+      ``
     ])
 
     return head
@@ -416,6 +337,14 @@ export class VitePressSEO {
     return head
   }
 
+  // 生成全局控制图片放大交互
+  generateImageZoom(): HeadConfig[] {
+    const head: HeadConfig[] = []
+    head.push(['link', { rel: 'stylesheet', href: '/static/css/fancybox.css' }])
+    head.push(['script', { src: '/static/js/fancybox.umd.js' }])
+    return head
+  }
+
   // 生成完整的 Head 配置
   generateHead(pageContext?: { title?: string; description?: string; path?: string }): HeadConfig[] {
     return [
@@ -426,7 +355,8 @@ export class VitePressSEO {
       ...this.generateVerification(),
       ...this.generatePerformanceConfig(),
       ...this.generateAnalytics(),
-      ...this.generatePromotionConfig()
+      ...this.generatePromotionConfig(),
+      ...this.generateImageZoom()
     ]
   }
 

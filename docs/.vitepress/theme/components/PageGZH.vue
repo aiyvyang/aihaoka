@@ -8,7 +8,7 @@
 
     <div class="qrcode">
       <a href="https://mp.weixin.qq.com/s/l5zeSwt6ZcGo5VjQMlsqEg" target="_blank">
-        <img src="/qrcode.jpg" alt="公众号二维码" />
+        <img src="/icons/qrcode.jpg" alt="公众号二维码" />
       </a>
     </div>
 

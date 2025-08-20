@@ -14,7 +14,7 @@ export async function genFeed(config: SiteConfig) {
     link: baseUrl,
     language: 'zh',
     image: `${baseUrl}/logo.png`,
-    favicon: `${baseUrl}/favicon.ico`,
+    favicon: `${baseUrl}/icons/favicon.ico`,
     copyright: 'Copyright © 2025-' + new Date().getFullYear() + ' 爱宇阳'
   })
 

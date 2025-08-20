@@ -12,7 +12,7 @@
               {{ website.icpRecordCode }}
             </a>
             <span v-if="website?.publicSecurityRecordCode" class="l-divider"> | </span>
-            <img v-if="website?.publicSecurityRecordCode" src="/gongan.png" alt="" style="width: 16px; margin-right: 4px;">
+            <img v-if="website?.publicSecurityRecordCode" src="/icons/gongan.png" alt="" style="width: 16px; margin-right: 4px;">
             <a
               class="beian strong"
               target="_blank"

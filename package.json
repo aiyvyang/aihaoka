@@ -58,7 +58,9 @@
     "gray-matter": "^4.0.3",
     "pg": "^8.16.3",
     "prettier": "^3.6.2",
+    "pwa-asset-generator": "^8.0.5",
     "typescript": "^5.9.2",
+    "vite-plugin-pwa": "^1.0.3",
     "vitepress": "^2.0.0-alpha.11"
   }
 }

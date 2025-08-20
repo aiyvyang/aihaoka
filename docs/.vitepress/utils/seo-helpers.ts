@@ -143,56 +143,12 @@ export class PageSEOHelper {
       url: article.url,
       publisher: {
         '@type': 'Organization',
-        name: '流量卡优选网',
+        name: '爱号卡',
         logo: {
           '@type': 'ImageObject',
           url: 'https://your-domain.com/logo.png'
         }
       }
-    }
-  }
-}
-
-// 转化追踪工具类
-export class ConversionTracker {
-
-  // 追踪按钮点击
-  static trackButtonClick(buttonName: string, category = 'cta') {
-    if (typeof window !== 'undefined' && window.seoTracker) {
-      window.seoTracker.track('click', category, buttonName, 1)
-    }
-  }
-
-  // 追踪表单提交
-  static trackFormSubmit(formName: string, category = 'form') {
-    if (typeof window !== 'undefined' && window.seoTracker) {
-      window.seoTracker.track('submit', category, formName, 1)
-    }
-  }
-
-  // 追踪流量卡申请
-  static trackCardApplication(cardName: string, provider: string) {
-    if (typeof window !== 'undefined' && window.seoTracker) {
-      window.seoTracker.track('apply_card', 'conversion', `${provider}-${cardName}`, 1)
-
-      // 特殊处理 - 发送到客服系统
-      if (window.customerServiceConfig?.enable) {
-        console.log(`用户申请了 ${provider} 的 ${cardName}`)
-      }
-    }
-  }
-
-  // 追踪客服咨询
-  static trackCustomerService(source = 'floating-button') {
-    if (typeof window !== 'undefined' && window.seoTracker) {
-      window.seoTracker.track('consult_service', 'conversion', source, 1)
-    }
-  }
-
-  // 追踪外链点击
-  static trackExternalLink(url: string, linkText: string) {
-    if (typeof window !== 'undefined' && window.seoTracker) {
-      window.seoTracker.track('external_link', 'navigation', `${linkText}-${url}`, 1)
     }
   }
 }
@@ -394,16 +350,8 @@ export function useSEO() {
     }
   }
 
-  // 追踪转化事件
-  const trackConversion = ConversionTracker.trackButtonClick
-  const trackFormSubmit = ConversionTracker.trackFormSubmit
-  const trackCardApplication = ConversionTracker.trackCardApplication
-
   return {
     setPageSEO,
-    trackConversion,
-    trackFormSubmit,
-    trackCardApplication
   }
 }
 
@@ -434,7 +382,7 @@ const { setPageSEO, trackCardApplication } = useSEO()
 
 // 动态设置 SEO
 setPageSEO({
-  title: '移动19元100GB流量卡 - 流量卡优选网',
+  title: '移动19元100GB流量卡 - 爱号卡',
   description: '移动超值流量卡推荐...',
   keywords: ['移动流量卡', '便宜流量卡']
 })

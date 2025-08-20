@@ -4,18 +4,18 @@ import { writeFileSync } from 'fs'
 import { Feed } from 'feed'
 import { createContentLoader, type SiteConfig } from 'vitepress'
 
-const baseUrl = `https://appbeebee.com`
+const baseUrl = `https://hk.aiyvyang.top`
 
 export async function genFeed(config: SiteConfig) {
   const feed = new Feed({
     title: '爱号卡',
-    description: '前端技术分享博客',
+    description: '爱号卡是一个基于VitePress打造的流量卡推广与资源分享平台。它不仅支持图文介绍、套餐展示、在线申请，还能用于推广分销、资源整理与知识分享。',
     id: baseUrl,
     link: baseUrl,
     language: 'zh',
     image: `${baseUrl}/logo.png`,
     favicon: `${baseUrl}/favicon.ico`,
-    copyright: 'Copyright © 2023-' + new Date().getFullYear() + ' 爱宇阳'
+    copyright: 'Copyright © 2025-' + new Date().getFullYear() + ' 爱宇阳'
   })
 
   const posts = await createContentLoader('posts/*/*/*.md', {

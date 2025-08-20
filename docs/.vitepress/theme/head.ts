@@ -1,6 +1,5 @@
 import type { HeadConfig } from 'vitepress'
 
-// console.log('dddddd',frontmatter.value)
 export const head: HeadConfig[] = [
   ['link', { rel: 'icon', href: '/favicon.ico' }],
   ['link', { rel: 'icon', href: '/logo.png' }],
@@ -14,11 +13,22 @@ export const head: HeadConfig[] = [
     `var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?bf9f13ec72376c75ea9d913408ebc20d";
+      hm.src = "https://hm.baidu.com/hm.js?c8bab594a320d3a6fceb06c5c6f67acc";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();`
   ],
+  // <!-- Google Tag Manager -->
+  [
+    'script',
+    {},
+    `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NK2T793R');`
+  ],
+  // <!-- End Google Tag Manager -->
   [
     'script',
     {
@@ -48,6 +58,18 @@ export const head: HeadConfig[] = [
     'script',
     {},
     `(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`
+  ],
+  [
+    'script',
+    {},
+    `window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };`
+  ],
+  [
+    'script',
+    {
+      defer: '',
+      src: '/_vercel/insights/script.js'
+    }
   ],
   [
     'link',

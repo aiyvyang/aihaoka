@@ -58,7 +58,7 @@ description:  基于 vitepress 打造的适合图文资源分享的博客主题
 
 <ArticleLink via="post" :work="{
     title: 'shiheme/appbeebee',
-    view: 'https://appbeebee.com/',
+    view: 'https://hk.aiyvyang.top/',
     github: 'shiheme/appbeebee',
     coveross: '',
     beecode: '',

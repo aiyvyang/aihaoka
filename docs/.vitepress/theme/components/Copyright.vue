@@ -3,36 +3,30 @@
   <div class="site-footer">
     <div class="btmgroup">
       <div class="msgcard">
-        <!-- <div class="gzh">
-                    <PageGZH />
-                </div> -->
+        <!--<div class="gzh"><PageGZH /></div>-->
         <div class="copyright" v-if="website?.showFooter">
-          Copyright © {{ new Date().getFullYear() === 2023 ? '' : '2023-' }}{{ new Date().getFullYear() }}
+          Copyright © {{ new Date().getFullYear() === 2025 ? '' : '2025-' }}{{ new Date().getFullYear() }}
           <a class="title strong" :href="website?.link">{{ webTitle }}</a>
-          <p class="source">
-            由<a class="strong" href="https://vitepress.dev/" target="_blank">vitepress</a>构建。主题源代码可在<a
-              class="strong"
-              href="https://github.com/shiheme/appbeebee"
+          <div class="l-beian-box">
+            <a class="beian strong" target="_blank" v-if="website?.icpRecordCode" href="https://beian.miit.gov.cn/">
+              {{ website.icpRecordCode }}
+            </a>
+            <span v-if="website?.publicSecurityRecordCode" class="l-divider"> | </span>
+            <img v-if="website?.publicSecurityRecordCode" src="/gongan.png" alt="" style="width: 16px; margin-right: 4px;">
+            <a
+              class="beian strong"
               target="_blank"
-              >GitHub</a
-            >上获取。
-          </p>
-          <a class="beian strong" target="_blank" v-if="website?.icpRecordCode" href="https://beian.miit.gov.cn/">{{
-            website.icpRecordCode
-          }}</a
-          ><template v-if="website?.publicSecurityRecordCode"> | </template
-          ><a
-            class="beian strong"
-            target="_blank"
-            v-if="website?.publicSecurityRecordCode"
-            href="https://beian.mps.gov.cn/#/query/webSearch"
-            >{{ website.publicSecurityRecordCode }}</a
-          >
+              v-if="website?.publicSecurityRecordCode"
+              href="https://beian.mps.gov.cn/#/query/webSearch"
+            >
+              {{ website.publicSecurityRecordCode }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <p id="result" v-if="website?.copyadd"><!-- 用户复制操作时进行添加预制文本 --></p>
+  <p id="result" style="display: none" v-if="website?.copyadd"><!-- 用户复制操作时进行添加预制文本 --></p>
 </template>
 <script lang="ts" setup>
 import { onMounted } from 'vue'
@@ -40,8 +34,8 @@ import { useData } from 'vitepress'
 
 const { site, theme, frontmatter } = useData()
 const website = theme.value?.website ? theme.value.website : {}
-const webTitle = site.value?.title ? site.value.title : '比比工房'
-const webAuthor = theme.value?.article?.cc?.author ? theme.value.article.cc.author : '小鱼哥'
+const webTitle = site.value?.title ? site.value.title : '爱宇阳'
+const webAuthor = theme.value?.article?.cc?.author ? theme.value.article.cc.author : '爱宇阳'
 
 onMounted(() => {
   if (website?.copyadd) {
@@ -123,6 +117,15 @@ onMounted(() => {
   .strong:hover {
     color: var(--vp-c-brand);
     text-decoration: underline;
+  }
+}
+
+.l-beian-box {
+  display: flex;
+  align-items: center;
+
+  .l-divider {
+    margin: 0 4px;
   }
 }
 </style>

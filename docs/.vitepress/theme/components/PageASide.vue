@@ -94,21 +94,21 @@
                 <div
                   v-if="pay"
                   class="specialpop"
-                  style="position: absolute; left: 50%; top: 0; transform: translate3d(-50%, -100px, 0px)"
+                  style="position: absolute; left: 50%; top: 0; transform: translate3d(-50%, -227px, 0px)"
                 >
                   <div class="v-popper__backdrop"></div>
                   <div class="v-popper__wrapper">
                     <div class="v-popper__inner">
                       <div
                         style="
-                          width: 100px;
-                          height: 100px;
+                          width: 227px;
+                          height: 227px;
                           border-radius: 4px;
                           overflow: hidden;
                           background-color: #ffffff;
                         "
                       >
-                        <img v-if="theme?.website?.coffeeQrcode" :src="theme.website?.coffeeQrcode" />
+                        <img v-if="theme?.website?.coffeeQrcode" :src="theme.website?.coffeeQrcode" alt="" />
                       </div>
                     </div>
                     <div class="v-popper__arrow-container" style="top: 14px">

@@ -1,6 +1,11 @@
 <template>
   <!-- 对页面布局做统筹管理 -->
   <Layout :class="{ home: frontmatter?.index }">
+    <template #layout-bottom>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK2T793R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    </template>
     <template #not-found>
       <!-- 页面不存在 -->
       <div class="page404">

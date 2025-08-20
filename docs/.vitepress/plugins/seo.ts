@@ -34,6 +34,7 @@ export interface SEOConfig {
     google?: string
     gtm?: string
     vercel?: boolean
+    vercelInsights?: boolean
   }
 
   // 站长验证
@@ -262,6 +263,12 @@ export class VitePressSEO {
     if (this.config.analytics.vercel) {
       head.push(['script', {}, `window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };`])
       head.push(['script', { defer: '', src: '/_vercel/insights/script.js' }])
+    }
+
+    // Vercel Speed Analytics
+    if (this.config.analytics.vercelInsights) {
+      head.push(['script', {}, `window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };`])
+      head.push(['script', { defer: '', src: '/_vercel/speed-insights/script.js' }])
     }
 
     return head

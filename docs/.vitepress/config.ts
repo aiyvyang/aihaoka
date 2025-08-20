@@ -45,7 +45,8 @@ const seoPlugin = createSEOPlugin({
     baidu: 'c8bab594a320d3a6fceb06c5c6f67acc',
     google: 'G-F232JFK99T',
     gtm: 'GTM-NK2T793R',
-    vercel: true
+    vercel: true,
+    vercelInsights: true
   },
 
   // 站长验证码
@@ -55,8 +56,8 @@ const seoPlugin = createSEOPlugin({
     bing: '25CF9BABEF760A9C07BA79C5089F3E4F',
     yandex: '83ec33d4282bbcc2',
     so360: 'a4ec10a1f93883d5fc61e4215e93d214',
-    sougou: 'xmgTajDyqL',
-    shenma: '3c30193fc3bf52dcc4fe98469edb96a7_1755676794'
+    sougou: 'R7ANJiRoKa',
+    shenma: '3c30193fc3bf52dcc4fe98469edb96a7_1755680111'
   },
 
   // 推广专项配置（流量卡推广重点）

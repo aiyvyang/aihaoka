@@ -35,9 +35,9 @@ const seoPlugin = createSEOPlugin({
 
   // 社交媒体链接
   social: {
-    weibo: 'https://weibo.com/your-weibo',
-    bilibili: 'https://space.bilibili.com/your-bilibili',
-    github: 'https://github.com/your-github'
+    weibo: 'https://weibo.com/thedanyang',
+    bilibili: 'https://space.bilibili.com/335600106',
+    github: 'https://github.com/aiyvyang'
   },
 
   // 分析工具配置

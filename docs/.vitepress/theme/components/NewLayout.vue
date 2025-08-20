@@ -19,6 +19,9 @@
         <Lantern />
       </ClientOnly>
     </template>
+    <template #layout-bottom>
+      <SpeedInsights />
+    </template>
     <template #nav-bar-content-after>
       <!-- 在导航 social后添加 -->
     </template>
@@ -76,6 +79,7 @@ import md5 from 'blueimp-md5'
 import DefaultTheme from 'vitepress/theme'
 import Copyright from './Copyright.vue'
 import Player from './Player.vue'
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 
 const { isPause } = toRefs(usePlayerStore())
 const { page, theme, frontmatter, isDark } = useData()

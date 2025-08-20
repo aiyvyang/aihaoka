@@ -44,8 +44,6 @@ export interface SEOConfig {
     bing?: string
     yandex?: string
     so360?: string
-    sougou?: string
-    shenma?: string
   }
 
   // 推广配置（针对流量卡等推广站点）
@@ -285,9 +283,7 @@ export class VitePressSEO {
       { name: 'google-site-verification', key: 'google' },
       { name: 'msvalidate.01', key: 'bing' },
       { name: 'yandex-verification', key: 'yandex' },
-      { name: '360-site-verification', key: 'so360' },
-      { name: 'sogou_site_verification', key: 'sougou' },
-      { name: 'shenma-site-verification', key: 'shenma' }
+      { name: '360-site-verification', key: 'so360' }
     ]
 
     verifications.forEach(({ name, key }) => {

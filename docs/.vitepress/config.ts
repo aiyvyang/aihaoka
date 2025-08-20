@@ -55,9 +55,7 @@ const seoPlugin = createSEOPlugin({
     google: '',
     bing: '25CF9BABEF760A9C07BA79C5089F3E4F',
     yandex: '83ec33d4282bbcc2',
-    so360: 'a4ec10a1f93883d5fc61e4215e93d214',
-    sougou: 'R7ANJiRoKa',
-    shenma: '3c30193fc3bf52dcc4fe98469edb96a7_1755680111'
+    so360: 'a4ec10a1f93883d5fc61e4215e93d214'
   },
 
   // 推广专项配置（流量卡推广重点）
